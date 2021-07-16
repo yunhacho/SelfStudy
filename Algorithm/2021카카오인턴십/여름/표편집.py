@@ -33,8 +33,11 @@ class EditTable:
             self.curpos.next=None
         else:
             next_node=self.curpos.next
-            self.curpos.prev.next=next_node
-            next_node.prev=self.curpos.prev
+            if self.curpos.prev is None:
+                next_node.prev=None
+            else:
+                self.curpos.prev.next=next_node
+                next_node.prev=self.curpos.prev
             self.curpos=next_node 
 
     def bring_back_recentDelete(self):
