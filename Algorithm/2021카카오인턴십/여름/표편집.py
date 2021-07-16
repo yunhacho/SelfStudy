@@ -30,11 +30,12 @@ class EditTable:
         self.DeleteStack.append(self.curpos)
         if self.curpos.next is None:
             self.curpos=self.curpos.prev
+            self.curpos.next=None
         else:
             next_node=self.curpos.next
             self.curpos.prev.next=next_node
             next_node.prev=self.curpos.prev
-            self.curpos=next_node
+            self.curpos=next_node 
 
     def bring_back_recentDelete(self):
         node_to_bringback=self.DeleteStack.pop()
@@ -65,6 +66,7 @@ def solution(n, k, cmd):
             edit.delete_curpos_select_next()
         elif cmdlist[0]=='Z':
             edit.bring_back_recentDelete()
+
     Deleted=edit.get_DeleteStack()
     for index in Deleted: answer[index]='X'
     return ''.join(answer)
