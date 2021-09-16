@@ -1,17 +1,17 @@
-count=0
-
-def dfs(idx, numbers, target, totalsum, length):
+def solution(numbers, target):
     global count
-    if length==idx:
-        if target==totalsum: count+=1
+    count=0
+    dfs(0,0,numbers, target)
+    return count
+
+def dfs(depth, total, numbers, target):
+    global count
+    if depth==len(numbers):
+        if total==target: count+=1
         return
     else:
-        dfs(idx+1, numbers, target, totalsum+numbers[idx], length)
-        dfs(idx+1, numbers, target, totalsum-numbers[idx], length)
-        
-def solution(numbers, target):
-    dfs(0, numbers, target, 0, len(numbers))
-    return count
+        dfs(depth+1, total+numbers[depth], numbers, target)
+        dfs(depth+1, total-numbers[depth], numbers, target)
 
 if __name__ == "__main__":
     numbers=list(map(int, input().split(',')))
