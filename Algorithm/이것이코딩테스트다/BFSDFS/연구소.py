@@ -2,6 +2,7 @@
 from itertools import product, combinations
 from collections import deque
 import copy
+
 def get_pos(graph):
     zero=[]; virus=[]
     for c in product(range(len(graph)), range(len(graph[0]))):
