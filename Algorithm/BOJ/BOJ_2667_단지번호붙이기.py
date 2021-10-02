@@ -101,16 +101,16 @@ def bfs(i,j):
     dx=[1,-1,0,0]
     dy=[0,0,-1,1]
     q=deque([(i,j)])
+    visited[i][j]=True
     count=0
     while q:
         x,y=q.popleft()
-        if not visited[x][y]:
-            for i in range(4):
-                mx, my = x+dx[i], y+dy[i]
-                if 0<=mx<n and 0<=my<n and maps[mx][my] and not visited[mx][my]:
+        for i in range(4):
+            mx, my = x+dx[i], y+dy[i]
+            if 0<=mx<n and 0<=my<n and maps[mx][my] and not visited[mx][my]:
                     q.append((mx,my))
-            visited[x][y]=True
-            count+=1
+                    visited[mx][my]=True
+        count+=1
     return count
 
 n=int(input())
