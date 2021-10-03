@@ -11,6 +11,6 @@ def dfs(depth,sequence):
     for i in range(1,n+1):
         if not visited[i]:
             visited[i]=True
-            dfs(depth+1,sequence[:]+[i])
+            dfs(depth+1,sequence+[i])
             visited[i]=False
 dfs(0,[])
