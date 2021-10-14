@@ -34,15 +34,16 @@ def make_cloud(clouds):
                 maps[i][j]-=2
     return new
 
-n,m=map(int, input().split())
-maps=[list(map(int, input().split())) for _ in range(n)]
-instruction=[list(map(int, input().split())) for _ in range(m)] # [[di,si]] 방향과 거리
+if __name__ =="__main__":
+    n,m=map(int, input().split())
+    maps=[list(map(int, input().split())) for _ in range(n)]
+    instruction=[list(map(int, input().split())) for _ in range(m)] # [[di,si]] 방향과 거리
 
-clouds=[(n-1,0),(n-1,1),(n-2,0),(n-2,1)]
-for i in range(m):
-    clouds=move_cloud(instruction[i][0], instruction[i][1])
-    increase_water_in_cloud(clouds)
-    waterbug_magic(clouds)
-    clouds=make_cloud(clouds)
+    clouds=[(n-1,0),(n-1,1),(n-2,0),(n-2,1)]
+    for i in range(m):
+        clouds=move_cloud(instruction[i][0], instruction[i][1])
+        increase_water_in_cloud(clouds)
+        waterbug_magic(clouds)
+        clouds=make_cloud(clouds)
 
-print(sum(maps[x][y] for x in range(n) for y in range(n)))
+    print(sum(maps[x][y] for x in range(n) for y in range(n)))
